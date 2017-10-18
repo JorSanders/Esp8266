@@ -22,7 +22,7 @@ def drawCircle(x, y, radius):
     oled.circle(x, y, radius)
 
 
-def drawShape(x, y, radius):
+def drawShape(x, y, size):
     shape = robj.randRange(1)
 
     if shape == 0:

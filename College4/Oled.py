@@ -27,8 +27,17 @@ class Oled(lcd.SSD1306_I2C):
     def rectangle(self, left, top, width, height=0, color=0x1, show=1):
         if height == 0:
             height = width
-        for y in range(height):
-            for x in range(width):
+
+        xStep = 1
+        if width < 0:
+            xStep = -1
+
+        yStep = 1
+        if height < 0:
+            yStep = -1
+
+        for y in range(0, height, yStep):
+            for x in range(0, width, xStep):
                 self.pixel(left + x, top + y, color)
         if (show):
             self.show()
