@@ -16,4 +16,7 @@
 5 - Ground
 6 - Adc in (MAX 1v!!!)
 
+#http://docs.micropython.org/en/latest/esp8266/esp8266/tutorial/intro.html#deploying-the-firmware
+#https://askubuntu.com/questions/133235/how-do-i-allow-non-root-access-to-ttyusb0-on-12-04
+
 

@@ -1,14 +1,42 @@
 import machine
 
-led = machine.Pin(14, machine.Pin.OUT)
+led = machine.Pin(13, machine.Pin.OUT)
+
 led.on()
 
-from machine import UART
+# source https://github.com/dhylands/upy-examples/blob/master/boot.py
+# boot.py -- run on boot-up
+#
+# This is some common initialization that I like to keep around.
 
-uart = UART(1, 115200)                         # init with given baudrate
-uart.init(115200, bits=8, parity=None, stop=1) # init with given parameters
+import esp as pyb
+import micropython
+import sys
+#pyb.main('main.py') # main script to run after this one
+pyb.usb_mode('CDC') # act as a serial and a storage device
+#pyb.usb_mode('CDC+HID') # act as a serial device and a mouse
 
-while True:
-    uart.write('abc')   # write the 3 characters
+def bl():
+    pyb.bootloader()
 
-led.off()
+def pins():
+    for pin_name in dir(pyb.Pin.board):
+        pin = pyb.Pin(pin_name)
+        print('{:10s} {:s}'.format(pin_name, str(pin)))
+
+def af():
+    for pin_name in dir(pyb.Pin.board):
+        pin = pyb.Pin(pin_name)
+        print('{:10s} {:s}'.format(pin_name, str(pin.af_list())))
+
+def init():
+    if True:
+        uart = pyb.UART(6,115200)
+        pyb.repl_uart(uart)
+        print("REPL is also on UART 6 (Y1=Tx Y2=Rx)")
+    if True:
+        bufsize = 100
+        print("Setting alloc_emergency_exception_buf to",  bufsize)
+        micropython.alloc_emergency_exception_buf(bufsize)
+
+init()
