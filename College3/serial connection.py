@@ -7,9 +7,6 @@ import serial
 ser = serial.Serial(
     port='/dev/ttyUSB0',
     baudrate=115200,
-    parity=serial.PARITY_ODD,
-    stopbits=serial.STOPBITS_TWO,
-    bytesize=serial.SEVENBITS
 )
 
 ser.isOpen()
@@ -30,7 +27,7 @@ while 1:
     else:
         # send the character to the device
         # (note that I happend a \r\n carriage return and line feed to the characters - this is requested by my device)
-        ser.write(input.encode('utf-8'))
+        ser.write(input.encode())
         out = ''
         # let's wait one second before reading output (let's give device time to answer)
         time.sleep(1)
