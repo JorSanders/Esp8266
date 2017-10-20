@@ -1,12 +1,6 @@
-enemies = []
-enemies.append(1)
-enemies.append(2)
-enemies.append(3)
+from datetime import datetime
+tstart = datetime.now()
 
-enemies.pop(0)
-
-enemies.pop(0)
-enemies.pop(0)
-
-
-print enemies
+print(tstart.hour)
+print(tstart.minute)
+print(tstart.second)

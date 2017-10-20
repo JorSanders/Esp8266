@@ -1,15 +1,14 @@
-import machine, ssd1306, time
+import machine, College4.ssd1306, time
 
 screenWidth = 128
 screenHeight = 32
 delay = 1
 i2c = machine.I2C(scl=machine.Pin(5), sda=machine.Pin(4))
-oled = ssd1306.SSD1306_I2C(screenWidth, screenHeight, i2c)
+oled = College4.ssd1306.SSD1306_I2C(screenWidth, screenHeight, i2c)
 adc = machine.ADC(0)
 
 while True:
     oled.fill(0)
-    oled.show()
     volts = adc.read()
     temp = (volts - 500) / 10
     temp -= 5
