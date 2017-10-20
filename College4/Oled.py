@@ -3,6 +3,7 @@
 import ssd1306 as lcd
 import machine
 
+
 class Oled(lcd.SSD1306_I2C):
     def __init__(self, width=128, height=32, i2c=machine.I2C(scl=machine.Pin(5), sda=machine.Pin(4)), addr=0x3c,
                  external_vcc=False):

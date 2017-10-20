@@ -37,7 +37,7 @@ for x in range(1, 100):
     temp -= 5
 
     # Create a dot, then pause to show the plot
-    plt.scatter(x,temp)
+    plt.scatter(x,volts)
     plt.pause(0.001)
 
 plt.pause(5)
