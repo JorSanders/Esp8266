@@ -26,6 +26,11 @@ class Oled(lcd.SSD1306_I2C):
             self.show()
 
     def rectangle(self, left, top, width, height=0, color=0x1, show=1):
+        left=int(left)
+        top=int(top)
+        width=int(width)
+        height=int(height)
+
         if height == 0:
             height = width
 
@@ -44,6 +49,9 @@ class Oled(lcd.SSD1306_I2C):
             self.show()
 
     def circle(self, x0, y0, r, show=1):
+        x0 = int(x0)
+        y0 = int(y0)
+        r = int(r)
         for y in range(y0 - r, y0 + r + 1):
             for x in range(x0 - r, x0 + r + 1):
                 xd = x - x0

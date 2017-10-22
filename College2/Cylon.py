@@ -1,7 +1,7 @@
 import machine, time
 
 # Set the led ports
-ledports = [14,12,13,15,0,16]
+ledports = [14,12,13,15,0,16,2]
 
 #create the empty led list
 leds = []
@@ -47,4 +47,4 @@ while True:
         else:
             i -= 1
 
-    time.sleep(0.05)
+    time.sleep(0.03)

@@ -1,6 +1,7 @@
-import Oled
-import Random
 import machine
+
+import Random
+from Imports import Oled
 
 SCREEENWIDTH = 128
 SCREEENHEIGHT = 32
@@ -23,6 +24,9 @@ class GameHandler:
         global GROUND
 
         self.player = GameObject(5, GROUND - 15, 10, 15)
+        self.enemies = []
+
+        self.score = 0
 
         self.gravity = GROUND / 30
         self.gravity = 3
@@ -47,6 +51,11 @@ class GameHandler:
             self.enemies.append(GameObject(SCREEENWIDTH - 10, GROUND - 15, 10, 15, -9))
 
         self.moveGameObjects()
+
+        for enemie in self.enemies:
+            if enemie.x <= self.player.x + self.player.width:
+                if Physics.rectangleCollision(self.player.x, self.player.y, self.player.width, self.player.height, enemie.x, enemie.y, enemie.width, enemie.height):
+                    self.endGame()
 
     def moveGameObjects(self):
         global GROUND
@@ -73,12 +82,20 @@ class GameHandler:
         for enemy in self.enemies:
             enemy.draw()
 
-        oled.message('Score: ' + str(self.score), SCREEENWIDTH - (8*9))
+        oled.message('Score: ' + str(self.score), SCREEENWIDTH - (8 * 9), 0)
 
         # oled.message(str(self.player.y) + " " + str(self.player.height))
 
         # keep this at the bottom
         oled.show()
+
+    def endGame(self):
+        while True:
+            if not self.jumpButton.value():
+                self.__init__()
+            oled.erase(0)
+            oled.message('Score: ' + str(self.score))
+
 
 
 # gameobject class for both enemies and the player
@@ -105,6 +122,13 @@ class GameObject:
         global GROUND
         if self.y + self.height >= GROUND:
             self.vy -= 14
+
+
+class Physics:
+    def rectangleCollision(x0, y0, width0, height0, x1, y1, width1, height1):
+        if x0 + width0 > x1 and x0 < x1 + width1 \
+                and y0 + height0 > y1 and y0 < y1 + height1:
+            return True
 
 
 gameHandler = GameHandler()

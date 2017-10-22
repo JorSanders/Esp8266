@@ -22,7 +22,7 @@ ser.write('adc = machine.ADC(0) \r\n'.encode())
 time.sleep(1)
 ser.flushInput()
 
-for x in range(1, 100):
+for x in range(1, 1000):
     # perform adc.read(), ignore the first line we retrieve
     # Then save the value from the second line
     ser.write('adc.read() \r\n'.encode())

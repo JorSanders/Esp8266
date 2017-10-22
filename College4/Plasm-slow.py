@@ -1,7 +1,9 @@
-import machine
-import ssd1306
 import math
 import time
+
+import machine
+
+from Imports import ssd1306
 
 PIXEL_WIDTH = 128
 PIXEL_HEIGHT = 32

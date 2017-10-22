@@ -8,7 +8,7 @@ import servo
 # It's a modified servo module from DiCola: extended with deinit()
 
 # create servo object - default arguments
-sv_pin = machine.Pin(14, machine.Pin.OUT) #Huzzah: Servo op GPIO14
+sv_pin = machine.Pin(16, machine.Pin.OUT) #Huzzah: Servo op GPIO14
 sv = servo.Servo(sv_pin)
 time.sleep(1)
 

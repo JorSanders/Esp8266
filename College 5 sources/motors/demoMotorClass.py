@@ -2,8 +2,11 @@
 # show motor speed on OLED on I2C
 # 2017-1009 PePo new OOP, assignment make it working!
 
-import machine, time, ssd1306
-import motor  #motor class
+import machine
+import ssd1306
+import time
+
+from Imports import motor
 
 # motor object
 GPIO_MOTOR = 12

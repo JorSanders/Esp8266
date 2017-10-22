@@ -1,6 +1,7 @@
-from datetime import datetime
-tstart = datetime.now()
+import time, ssd1306
 
-print(tstart.hour)
-print(tstart.minute)
-print(tstart.second)
+for i in range(10):
+    oled.fil(0)
+    oled.text(str(i), 0, 0)
+    oled.show()
+    time.sleep(1)
