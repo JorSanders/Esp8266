@@ -1,4 +1,5 @@
 import machine
+import time
 
 import Random
 import Oled
@@ -24,6 +25,7 @@ BALLSTARTVY = 6
 SCORELIMIT = 2
 PLAYER1NAME = 'Player 1'
 PLAYER2NAME = 'Player 2'
+TIMEBEFORERESTART = 2
 
 
 class GameHandler:
@@ -32,6 +34,7 @@ class GameHandler:
     potentioMeter = None
     player1Led = None
     player2Led = None
+    gameLoop = 0
 
     def __init__(self):
         self.players = []
@@ -45,11 +48,14 @@ class GameHandler:
         self.ball = Ball(SCREEENWIDTH - BALLRADIUS * 2, SCREEENHEIGHT / 2, BALLRADIUS, BALLSTARTVX, BALLSTARTVY)
         self.potentioMeter = PotentioMeter.PotentioMeter()
 
+        self.gameLoop = 0
+
         # Should be last line of the constructor
         self.playGame()
 
     def playGame(self):
-        while True:
+        self.gameLoop = 1
+        while self.gameLoop:
             self.updateGame()
             self.drawObjects()
 
@@ -123,10 +129,18 @@ class GameHandler:
         oled.show()
 
     def endGame(self, winner):
-        oled.erase(0)
-        while True:
+        startOfEndGame = time.time()
+        self.gameLoop = 0
+        endGameLoop = 1
+        while endGameLoop:
+            if time.time() >= startOfEndGame + TIMEBEFORERESTART:
+                for player in self.players:
+                    if not player.buttonDown.value() or not player.buttonUp.value():
+                        endGameLoop = 0
+                        self.__init__()
+            oled.erase(0)
             oled.message(winner.name + ' wins', show=0)
-            #oled.message(loser.name + ' loses', y=10, show=0)
+            #oled.message(str(time.time()) + ' ', y=10, show=0)
             oled.show()
 
 
