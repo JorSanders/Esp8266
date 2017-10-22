@@ -6,7 +6,7 @@ IE: Pong game, jumping game, temperature reading graph via serial connection, kn
 * [Firmware](http://docs.micropython.org/en/latest/esp8266/esp8266/tutorial/intro.html#deploying-the-firmware)
 * [Ampy](https://github.com/adafruit/ampy)
 
-To access serial connections without root permission seet [this](https://askubuntu.com/questions/133235/how-do-i-allow-non-root-access-to-ttyusb0-on-12-04) fix
+To access serial connections without root permission see [this](https://askubuntu.com/questions/133235/how-do-i-allow-non-root-access-to-ttyusb0-on-12-04) fix
 
 ## Pinlayout
 I pinned my ESP board on a breadboard with the MicroUSB facing up. Below i listed the breadboard lines that correspond with the ESP pins
@@ -69,4 +69,26 @@ Please note that these are the devices i got in my kit. And might differ from yo
 * Connect the middle to the Adc pin on the Esp
 * Connect the left pin with 3 times a brown black orange resistor to 3v supply
 
+## Ampy commands
+Im on a Ubuntu 16.04 my serial port = /dev/ttyUSB0 for windows is will be something like COM3
+
+Run a file (ctrl + c doesnt stop the script from running just detaches your terminal)
+```
+ampy --port /dev/ttyUSB0 run test.py
+```
+
+Put a file on the board
+```
+ampy --port /dev/ttyUSB0 put test.py
+```
+
+Remove a file from the board
+```
+ampy --port /dev/ttyUSB0 rm test.py
+```
+
+List files on the board
+```
+ampy --port /dev/ttyUSB0 ls
+```
 
