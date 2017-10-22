@@ -1,6 +1,7 @@
 # Scripts and games for the ESP8266 in (micro)python
 This are some scripts and games I made for my Esp board.
 IE: Pong game, jumping game, temperature reading graph via serial connection, knightrider leds
+Im no expert on this area, but if you have any questions feel free to contact me
 
 ## Prerequisites
 * [Firmware](http://docs.micropython.org/en/latest/esp8266/esp8266/tutorial/intro.html#deploying-the-firmware)
@@ -33,22 +34,22 @@ I pinned my ESP board on a breadboard with the MicroUSB facing up. Below i liste
 ## Devices
 Please note that these are the devices i got in my kit. And might differ from yours. Please check before connection your own devices
 
-###led
+### Led
 * Connect long leg to a gpio or any Vs
 * Connect short leg to ground
 * Use red red brown gold resistor (Asuming 3v is used)
 
-###button
+### Button
 * cros connect (IE top left - right bottom)
 * value (0) means pressed
 
-###servo
+### Servo-motor
 * Connect the yellow line to a gpio port
 * Connect the brown line to ground
 * Connect the red line to a 5v supply. Esp doesnt have that so i used a battery pack
 * Connect a condensator between 5v line and grnd(short leg 5v, long leg grnd)
 
-###motor
+### Motor
 * Connect the red line of the motor to diode white line of diode on the redline side
 * Connect the blue line of the motor on the end of that diode
 * Connect that to middle pin of a transistor
@@ -56,14 +57,14 @@ Please note that these are the devices i got in my kit. And might differ from yo
 * Connect the left pin of the transistor with a brown black orange gold resistor to ground
 * After resistor on the transistor line connect to a gpio pin
 
-###TMP36
+### TMP36
 * Facing the flat side
 * Connect the left pin to ground
 * Connect the right pin is 3v supply
 * Connect the middle to the Adc pin on the Esp
 * With hot temperatures the Adc pin might get overloaded so expirement with resistor
 
-#Potentiometer
+### Potentiometer
 * Arrow facing up
 * Connect the right pin ground
 * Connect the middle to the Adc pin on the Esp
