@@ -1,6 +1,8 @@
 # Scripts and games for the ESP8266 in (micro)python
 This are some scripts and games I made for my Esp board.
+
 IE: Pong game, jumping game, temperature reading graph via serial connection, knightrider leds
+
 Im no expert on this area, but if you have any questions feel free to contact me
 
 ## Prerequisites
