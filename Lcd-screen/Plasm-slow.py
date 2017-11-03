@@ -3,10 +3,10 @@ import time
 
 import machine
 
-from Imports import ssd1306
+import ssd1306
 
-PIXEL_WIDTH = 128
-PIXEL_HEIGHT = 32
+PIXEL_WIDTH = 20
+PIXEL_HEIGHT = 20
 MAX_BRIGHT=100
 screenWidth = 128
 screenHeight = 32

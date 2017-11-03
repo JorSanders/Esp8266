@@ -1,12 +1,12 @@
 import machine
 
-import College4.Random
-from Imports import Oled
+import Random
+import Oled
 
 oled = Oled.Oled()
 oled.erase()
 
-robj = College4.Random.Random()
+robj = Random.Random()
 delay = 0.5
 screenWidth = 128
 screenHeight = 32

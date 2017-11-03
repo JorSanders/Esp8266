@@ -3,6 +3,8 @@ import machine, time
 # Set the led ports
 ledports = [14,12,13,15,0,16,2]
 
+DELAY = 0.2
+
 #create the empty led list
 leds = []
 
@@ -47,4 +49,4 @@ while True:
         else:
             i -= 1
 
-    time.sleep(0.03)
+    time.sleep(DELAY)

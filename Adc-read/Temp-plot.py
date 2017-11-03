@@ -22,6 +22,9 @@ ser.write('adc = machine.ADC(0) \r\n'.encode())
 time.sleep(1)
 ser.flushInput()
 
+plt.scatter(0, 0)
+plt.pause(0.001)
+
 for x in range(1, 1000):
     # perform adc.read(), ignore the first line we retrieve
     # Then save the value from the second line
@@ -33,11 +36,10 @@ for x in range(1, 1000):
 
     # Calculate the temp
     volts = int(ser.readline())
-    temp = (volts - 500) / 10
-    temp -= 5
+    temp = (volts-610) / 7
 
     # Create a dot, then pause to show the plot
-    plt.scatter(x,volts)
+    plt.scatter(x,temp)
     plt.pause(0.001)
 
 plt.pause(5)

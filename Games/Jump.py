@@ -1,7 +1,7 @@
 import machine
 
 import Random
-from Imports import Oled
+import Oled
 
 SCREEENWIDTH = 128
 SCREEENHEIGHT = 32
